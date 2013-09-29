@@ -5,7 +5,7 @@ Initial::Application.routes.draw do
 
   get "dashboard/about"
   
- # root to: "dashboard#index"
+  root to: "dashboard#index"
   
  devise_for :users
  
