@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 
+ruby '1.9.3'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
@@ -9,6 +11,8 @@ group :development, :test do
 end
 gem 'devise'
 gem 'heroku'
+
+gem 'rails_12factor'
 
 
 # Gems used only for assets and not required
