@@ -48,7 +48,7 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     excon (0.25.3)
-    execjs (2.0.1)
+    execjs (2.0.2)
     heroku (2.41.0)
       heroku-api (~> 0.3.7)
       launchy (>= 0.3.2)
@@ -74,6 +74,7 @@ GEM
     multi_json (1.8.0)
     netrc (0.7.7)
     orm_adapter (0.4.0)
+    pg (0.17.0)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -136,6 +137,7 @@ DEPENDENCIES
   devise
   heroku
   jquery-rails
+  pg
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   sqlite3
