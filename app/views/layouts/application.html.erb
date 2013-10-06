@@ -51,7 +51,8 @@
 			<% if user_signed_in? %> 
 				<span class="button-right"><%= button_to "Log out", logout_path, :class => "log" %></span>
 				<span class="button-right">Welcome, <%= current_user.email %></span>
-			<% else %>
+				<%= link_to "My Account", edit_user_registration_path %>
+			<% else %>	
 				<span class="button-right"><%= button_to "Login", login_path, :class => "log" %></span>
 				<span class=""><%= button_to "Signup", signup_path, :class => "log" %></span>
 			<% end %>
