@@ -1,17 +1,34 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Initial</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css" />
+	
+	<%= stylesheet_link_tag    "default", :media => "all" %>
+	<!--<%= stylesheet_link_tag    "style", :media => "all" %> -->
+  	 <%= javascript_include_tag "application" %>
+  		<%= csrf_meta_tags %>
 </head>
+<!--
 <body>
 	<div id="wrapper">
+		
 		<div id="header">
 			<h1><center>Welcome</center></h1>
+				<div class="login">
+
+			</div>
 		</div>
+
 		<div id="container">
+		<div class="alert-box error"><span>error: </span>Write your error message here.</div>
+		<div class="alert-box success"><span>success: </span>Write your success message here.</div>
+		<div class="alert-box warning"><span>warning: </span>Write your warning message here.</div>
+		<div class="alert-box notice"><span>notice: </span>Write your notice message here.</div> 
+		
 			<p class="notice"><%= notice %></p>
       	 	<p class="alert"><%= alert %></p>
 	
@@ -20,5 +37,84 @@
 		<div id="sidebar">
 		</div>
 	</div>
+</body>
+</html>
+
+-->
+<body>
+<div id="wrapper">
+	<div id="header">
+		
+		<div id="logo">
+			<h1><a href="/dashboard/about">Waqf-<span>e</span>-Nau Norway</a></h1>
+			<div class="login">
+			<% if user_signed_in? %> 
+				<span class="button-right"><%= button_to "Log out", logout_path, :class => "log" %></span>
+				<span class="button-right">Welcome, <%= current_user.email %></span>
+			<% else %>
+				<span class="button-right"><%= button_to "Login", login_path, :class => "log" %></span>
+				<span class=""><%= button_to "Signup", signup_path, :class => "log" %></span>
+			<% end %>
+			</div>
+		</div>
+	</div>
+	<!-- end #header 
+	<div id="menu">
+		<ul>
+			<li class="current_page_item"><a href="/">Home</a></li>
+			<li><a href="/dashboard/events">Events</a></li>
+			<li><a href="/dashboard/about">About</a></li>
+			<li class="last"><a href="/dashboard/contact">Contact</a></li>
+		</ul>
+	</div>  -->
+	
+
+	
+	<% if user_signed_in? %>
+		  <% if current_user.admin? %>
+			 <div id='cssmenu'>
+				<ul class="width2">
+				   <li><a href='/'><span>Home</span></a></li>
+				   <li><a href='/users'><span>Users</span></a></li>
+				   <li><a href='/dashboard/events'><span>Events</span></a></li>
+				   <li><a href='/dashboard/about'><span>About</span></a></li>
+				   <li class='last'><a href='/dashboard/contact'><span>Contact</span></a></li>
+				</ul>
+			</div>
+		 <%else %>
+		 	<div id='cssmenu'>
+				<ul class="width1">
+				   <li><a href='/'><span>Home</span></a></li>
+				   <li><a href='/dashboard/events'><span>Events</span></a></li>
+				   <li><a href='/dashboard/about'><span>About</span></a></li>
+				   <li class='last'><a href='/dashboard/contact'><span>Contact</span></a></li>
+				</ul>
+			</div>
+		<% end %>
+	<% else %>
+			<div id='cssmenu'>
+				<ul class="width1">
+				   <li><a href='/'><span>Home</span></a></li>
+				   <li><a href='/dashboard/events'><span>Events</span></a></li>
+				   <li><a href='/dashboard/about'><span>About</span></a></li>
+				   <li class='last'><a href='/dashboard/contact'><span>Contact</span></a></li>
+				</ul>
+			</div>
+	
+	<% end %>
+	<!--
+	<div id="banner"><%= image_tag "header-image-bg.jpg", width:"1200", height:"400", alt:"" %></div> -->
+	<div id="welcome">
+		<div class="content">
+						<p class="notice"><%= notice %></p>
+      	 	<p class="alert"><%= alert %></p>
+      	 	
+
+			<%= yield %>
+		</div>
+	</div>
+<div id="footer">
+	<p>Copyright © 2013 by Anum Qudsia -  WaqfeNauNorway.com. All rights reserved. </p>
+</div>
 </body>
 </html>

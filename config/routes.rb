@@ -5,7 +5,13 @@ Initial::Application.routes.draw do
 
   get "dashboard/about"
   
+  get "dashboard/contact"
+  
+  
+  get "dashboard/events"
   root to: "dashboard#index"
+  
+  match '/about', :to => "dashboard#about", :as => 'about'
   
  devise_for :users
  
@@ -14,6 +20,9 @@ Initial::Application.routes.draw do
     match '/logout', :to => "devise/sessions#destroy", :as => 'logout'
     match '/signup', :to => "devise/registrations#new", :as => 'signup'
 end  
+
+  resources :user, :controller => "user"
+  match "/users/", :to => "user#index", :as => "users"
  
 
   # The priority is based upon order of creation:
