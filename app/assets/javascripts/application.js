@@ -17,6 +17,24 @@
 
 $( document ).ready(function() {
 	
+	var check = 0;
+	
+	if ( $("#error_explanation").text() != "" ) {
+ 		check = 1;
+ 	}
+ 	
+ 	
+ 	
+	if ( check == 1 ) {
+		$("#hide").show();
+		$("#password").text("");
+	}
+	$("#hide").hide();
+  	
+	 $(".password").click( function() {		
+		 $("#hide").show();
+		 $(".password").text("");
 		
-		
+	 });
+	
 });

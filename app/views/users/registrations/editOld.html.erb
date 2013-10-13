@@ -26,14 +26,6 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="edField"><%= f.label :password, :class => "edField1" %> <i class="edField1">(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off", :class => "edField2" %></div>
-
-  <div class="edField"><%= f.label :password_confirmation, :class => "edField1" %><br />
-  <%= f.password_field :password_confirmation, :class => "edField2" %></div>
-
-  <div class="edField"><%= f.label :current_password, :class => "edField1" %> <i class="edField1">(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password, :class => "edField2" %></div>
 
   <div><%= f.submit "Update", :class => "log" %></div>
 <% end %>

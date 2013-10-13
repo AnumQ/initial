@@ -1,5 +1,4 @@
-Initial::Application.routes.draw do
-  #devise_for :users
+Initial::Application.routes.draw do  #devise_for :users
 
   get "dashboard/index"
 
@@ -13,16 +12,29 @@ Initial::Application.routes.draw do
   
   match '/about', :to => "dashboard#about", :as => 'about'
   
- devise_for :users
+  devise_for :users 
+ # devise_for :users, :skip => [:registrations] do 
+ # end
+             
+            
+            
+  #  devise_scope :user do 
+  #    get '/user/custom/edit', :to => "users/registrations#edit", :as => 'edit_custom_user_registration'
+  #    get '/user/account', :to => "users/registrations#account", :as => 'account_custom_user_registration'
+  #  end
+
  
    devise_scope :user do
     match '/login', :to => "devise/sessions#new", :as => 'login'
     match '/logout', :to => "devise/sessions#destroy", :as => 'logout'
     match '/signup', :to => "devise/registrations#new", :as => 'signup'
+    
 end  
+
 
   resources :user, :controller => "user"
   match "/users/", :to => "user#index", :as => "users"
+  match "/user/:id/password", :to => "user#password", :as => "password"
  
 
   # The priority is based upon order of creation:

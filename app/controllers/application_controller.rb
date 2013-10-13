@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+    
+  
     def authorize
       unless user_signed_in?
         redirect_to login_path, :method => :get, :notice => "Please login."

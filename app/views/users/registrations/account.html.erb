@@ -1,18 +1,14 @@
-<h2>My Account<h2>
+<h1>My Account<h1>
 <div id="account">
-	<p><b>Email:</b>
-  		<%= @user.email %>
-	</p>
-		<p><b>Aims No:</b>
-  		<%= @user.aims_no %>
-	</p>
-
-
+<p>
+	<b>Email:</b>
+	<%= @user.email %>
+</p>
 
 <div id="password">
-<%= link_to "Change account details", '#', :class => "password" %>
+	<%= link_to 'Change Password', '#', :class => 'password' %>
+<div>
 </div>
-
 <di id="hide">
 <h2>Change account details</h2>
 
@@ -38,20 +34,15 @@
   <div><%= f.submit "Update", :class => "log" %></div>
 <% end %>
 
-
-</div>
-
 <br />
 
-<div>
-	<h2>Cancel my account</h2>
+<h2>Cancel my account</h2>
 
-	<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :class => "log3" , 
-	:data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :class => "log3" , :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
+<%= link_to "Back", :back %>
 
+	
 </div>
-<p class="link"><span><%= link_to "Back", :back %></span></p>
-
 
 

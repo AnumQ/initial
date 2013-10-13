@@ -275,10 +275,18 @@ hr {
 }
 
 #welcome h2 {
+	font-size: 30px;
 	padding: 0px 0px 20px 0px;
 }
 
 #welcome h2 a {
+	
+	text-decoration: none;
+	color: #0033CC;
+}
+
+#welcome p {
+	font-size: 20px;
 	text-decoration: none;
 	color: #000000;
 }
@@ -535,7 +543,7 @@ input:focus {
 }
 
 #cssmenu .width2 {
-	width:60%;
+	width:75%;
 }
 
 #cssmenu ul {
@@ -791,4 +799,15 @@ input:focus {
 }
 .CSSTableGenerator tr:first-child td:last-child{
 	border-width:0px 0px 1px 1px;
+}
+
+#account {
+	margin-top: 10px;
+	font-size: 16px;
+}
+
+.link a {
+	font-size: 16px;
+	underline: none;
+	 text-decoration: none;
 }

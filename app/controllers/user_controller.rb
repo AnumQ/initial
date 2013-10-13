@@ -1,6 +1,8 @@
 class UserController < ApplicationController
-  #load_and_authorize_resource
-  before_filter :authorize_admin
+  # load_and_authorize_resource
+   before_filter :authorize
+   before_filter :authorize_admin, :only => [:index, :new, :create, :destroy]
+  
   def index
     @title = "Listing all users"
     @users = User.all
@@ -31,15 +33,33 @@ class UserController < ApplicationController
   end
   
   def update
-    @user = User.find(params[:id])    
+    @user = User.find(params[:id])   
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
     if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully updated User."
-      redirect_to users_path
+      if @user.admin?
+        redirect_to users_path
+      else
+        redirect_to root_path
+      end
     else
       render :action => 'edit'
     end
+  end
+  
+  def password
+    @user = User.find(params[:id])   
+     # if @user.update_attributes(params[:user])
+       # flash[:notice] = "Successfully updated User."
+       # if @user.admin?
+         # redirect_to users_path
+       # else
+         # redirect_to root_path
+       # end
+     # else
+      # render :action => 'edit'
+    # end
   end
   
   def destroy
@@ -48,6 +68,11 @@ class UserController < ApplicationController
       flash[:notice] = "Successfully deleted User."
       redirect_to root_path
     end
+  end
+  
+  def needs_password?(user, params)
+    user.email != params[:user][:email] ||
+      params[:user][:password].present?
   end
   
 end
