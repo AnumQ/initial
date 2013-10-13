@@ -28,17 +28,26 @@ class UserController < ApplicationController
   end
   
   def edit
+    if current_user.admin?
     @user = User.find(params[:id])
+    else
+      @user = current_user
+    end
 
   end
   
   def update
-    @user = User.find(params[:id])   
+    if current_user.admin?
+      @user = User.find(params[:id])
+    else
+      @user = current_user
+    end
+    
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
     if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully updated User."
-      if @user.admin?
+      if current_user.admin?
         redirect_to users_path
       else
         redirect_to root_path
@@ -48,31 +57,14 @@ class UserController < ApplicationController
     end
   end
   
-  def password
-    @user = User.find(params[:id])   
-     # if @user.update_attributes(params[:user])
-       # flash[:notice] = "Successfully updated User."
-       # if @user.admin?
-         # redirect_to users_path
-       # else
-         # redirect_to root_path
-       # end
-     # else
-      # render :action => 'edit'
-    # end
-  end
-  
   def destroy
     @user = User.find(params[:id])
+ 
     if @user.destroy
       flash[:notice] = "Successfully deleted User."
       redirect_to root_path
     end
   end
-  
-  def needs_password?(user, params)
-    user.email != params[:user][:email] ||
-      params[:user][:password].present?
-  end
+    
   
 end

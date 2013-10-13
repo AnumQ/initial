@@ -23,13 +23,15 @@ $( document ).ready(function() {
  		check = 1;
  	}
  	
- 	
- 	
 	if ( check == 1 ) {
+		console.log("cominghere");
 		$("#hide").show();
 		$("#password").text("");
 	}
-	$("#hide").hide();
+	else {
+		$("#hide").hide();
+	}
+	
   	
 	 $(".password").click( function() {		
 		 $("#hide").show();
